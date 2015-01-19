@@ -17,7 +17,6 @@
   },
   "devDependencies": {
     "amp-debounce": "^1.0.1",
-    "amp-extend": "^1.0.1",
     "amp-size": "^1.0.1",
     "browserify": "^8.1.1",
     "tap-bail": "0.0.0",
