@@ -6,6 +6,26 @@
   "bugs": {
     "url": "https://github.com/ampersandjs/ampersand-events/issues"
   },
+  "dependencies": {
+    "amp-bind": "^1.0.1",
+    "amp-each": "^1.0.1",
+    "amp-extend": "^1.0.1",
+    "amp-is-empty": "^1.0.2",
+    "amp-keys": "^1.0.1",
+    "amp-once": "^1.0.1",
+    "amp-unique-id": "^1.0.2"
+  },
+  "devDependencies": {
+    "amp-debounce": "^1.0.1",
+    "amp-extend": "^1.0.1",
+    "amp-size": "^1.0.1",
+    "browserify": "^8.1.1",
+    "tap-bail": "0.0.0",
+    "tap-spec": "^2.1.2",
+    "tape": "^3.4.0",
+    "tape-run": "^0.3.0",
+    "zuul": "^1.16.5"
+  },
   "homepage": "https://github.com/ampersandjs/ampersand-events",
   "keywords": [
     "ampersand",
@@ -18,6 +38,8 @@
     "url": "https://github.com/ampersandjs/ampersand-events"
   },
   "scripts": {
-    "test": "node test/index.js"
+    "test": "browserify test/index.js | tape-run | tap-spec",
+    "test-browser": "zuul --local 8080 -- test/index.js",
+    "test-ci": "zuul -- test/index.js"
   }
 }

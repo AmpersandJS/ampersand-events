@@ -1,12 +1,12 @@
 var test = require('tape');
-var extend = require('../../amp/extend');
-var keys = require('../../amp/keys');
-var size = require('../../amp/size');
-var debounce = require('../../amp/debounce');
+var extend = require('amp-extend');
+var keys = require('amp-keys');
+var size = require('amp-size');
+var debounce = require('amp-debounce');
 var Events = require('../ampersand-events');
 
 
-test("on and trigger", function (t) {
+test('on and trigger', function (t) {
     t.plan(2);
     var obj = {
         counter: 0
@@ -25,7 +25,7 @@ test("on and trigger", function (t) {
     t.end();
 });
 
-test("binding and triggering multiple events", function (t) {
+test('binding and triggering multiple events', function (t) {
     t.plan(4);
     var obj = { counter: 0 };
     extend(obj, Events);
@@ -47,7 +47,7 @@ test("binding and triggering multiple events", function (t) {
     t.end();
 });
 
-test("binding and triggering with event maps", function (t) {
+test('binding and triggering with event maps', function (t) {
     var obj = { counter: 0 };
     extend(obj, Events);
 
@@ -79,7 +79,7 @@ test("binding and triggering with event maps", function (t) {
     t.end();
 });
 
-test("listenTo and stopListening", 1, function (t) {
+test('listenTo and stopListening', function (t) {
     t.plan(1);
     var a = extend({}, Events);
     var b = extend({}, Events);
@@ -91,7 +91,7 @@ test("listenTo and stopListening", 1, function (t) {
     t.end();
 });
 
-test("listenTo and stopListening with event maps", function (t) {
+test('listenTo and stopListening with event maps', function (t) {
     t.plan(4);
     var a = extend({}, Events);
     var b = extend({}, Events);
@@ -107,7 +107,7 @@ test("listenTo and stopListening with event maps", function (t) {
     t.end();
 });
 
-test("stopListening with omitted args", function (t) {
+test('stopListening with omitted args', function (t) {
     t.plan(2);
     var a = extend({}, Events);
     var b = extend({}, Events);
@@ -125,7 +125,7 @@ test("stopListening with omitted args", function (t) {
     t.end();
 });
 
-test("listenToOnce and stopListening", function (t) {
+test('listenToOnce and stopListening', function (t) {
     t.plan(1);
     var a = extend({}, Events);
     var b = extend({}, Events);
@@ -138,7 +138,7 @@ test("listenToOnce and stopListening", function (t) {
     t.end();
 });
 
-test("listenTo, listenToOnce and stopListening", function (t) {
+test('listenTo, listenToOnce and stopListening', function (t) {
     t.plan(1);
     var a = extend({}, Events);
     var b = extend({}, Events);
@@ -151,7 +151,7 @@ test("listenTo, listenToOnce and stopListening", function (t) {
     t.end();
 });
 
-test("listenTo and stopListening with event maps", function (t) {
+test('listenTo and stopListening with event maps', function (t) {
     t.plan(1);
     var a = extend({}, Events);
     var b = extend({}, Events);
@@ -163,25 +163,25 @@ test("listenTo and stopListening with event maps", function (t) {
     t.end();
 });
 
-test("listenTo yourself", function (t) {
+test('listenTo yourself', function (t) {
     t.plan(1);
     var e = extend({}, Events);
-    e.listenTo(e, "foo", function () { t.ok(true); });
-    e.trigger("foo");
+    e.listenTo(e, 'foo', function () { t.ok(true); });
+    e.trigger('foo');
     t.end();
 });
 
-test("listenTo yourself cleans yourself up with stopListening", function (t) {
+test('listenTo yourself cleans yourself up with stopListening', function (t) {
     t.plan(1);
     var e = extend({}, Events);
-    e.listenTo(e, "foo", function () { t.ok(true); });
-    e.trigger("foo");
+    e.listenTo(e, 'foo', function () { t.ok(true); });
+    e.trigger('foo');
     e.stopListening();
-    e.trigger("foo");
+    e.trigger('foo');
     t.end();
 });
 
-test("stopListening cleans up references", function (t) {
+test('stopListening cleans up references', function (t) {
     t.plan(4);
     var a = extend({}, Events);
     var b = extend({}, Events);
@@ -197,7 +197,7 @@ test("stopListening cleans up references", function (t) {
     t.end();
 });
 
-test("listenTo and stopListening cleaning up references", function (t) {
+test('listenTo and stopListening cleaning up references', function (t) {
     t.plan(2);
     var a = extend({}, Events);
     var b = extend({}, Events);
@@ -210,16 +210,16 @@ test("listenTo and stopListening cleaning up references", function (t) {
     t.end();
 });
 
-test("listenTo with empty callback doesn't throw an error", function (t) {
+test('listenTo with empty callback doesn\'t throw an error', function (t) {
     t.plan(1);
     var e = extend({}, Events);
-    e.listenTo(e, "foo", null);
-    e.trigger("foo");
+    e.listenTo(e, 'foo', null);
+    e.trigger('foo');
     t.ok(true);
     t.end();
 });
 
-test("trigger all for each event", function (t) {
+test('trigger all for each event', function (t) {
     t.plan(3);
     var a, b, obj = { counter: 0 };
     extend(obj, Events);
@@ -235,7 +235,7 @@ test("trigger all for each event", function (t) {
     t.end();
 });
 
-test("on, then unbind all functions", function (t) {
+test('on, then unbind all functions', function (t) {
     t.plan(1);
     var obj = { counter: 0 };
     extend(obj,Events);
@@ -248,7 +248,7 @@ test("on, then unbind all functions", function (t) {
     t.end();
 });
 
-test("bind two callbacks, unbind only one", function (t) {
+test('bind two callbacks, unbind only one', function (t) {
     t.plan(2);
     var obj = { counterA: 0, counterB: 0 };
     extend(obj,Events);
@@ -263,7 +263,7 @@ test("bind two callbacks, unbind only one", function (t) {
     t.end();
 });
 
-test("unbind a callback in the midst of it firing", function (t) {
+test('unbind a callback in the midst of it firing', function (t) {
     t.plan(1);
     var obj = {counter: 0};
     extend(obj, Events);
@@ -279,7 +279,7 @@ test("unbind a callback in the midst of it firing", function (t) {
     t.end();
 });
 
-test("two binds that unbind themeselves", function (t) {
+test('two binds that unbind themeselves', function (t) {
     t.plan(2);
     var obj = { counterA: 0, counterB: 0 };
     extend(obj,Events);
@@ -295,7 +295,7 @@ test("two binds that unbind themeselves", function (t) {
     t.end();
 });
 
-test("bind a callback with a supplied context", function (t) {
+test('bind a callback with a supplied context', function (t) {
     t.plan(1);
     var TestClass = function () {
         return this;
@@ -310,7 +310,7 @@ test("bind a callback with a supplied context", function (t) {
     t.end();
 });
 
-test("nested trigger with unbind", function (t) {
+test('nested trigger with unbind', function (t) {
     t.plan(1);
     var obj = { counter: 0 };
     extend(obj, Events);
@@ -323,7 +323,7 @@ test("nested trigger with unbind", function (t) {
     t.end();
 });
 
-test("callback list is not altered during trigger", function (t) {
+test('callback list is not altered during trigger', function (t) {
     t.plan(2);
     var counter = 0, obj = extend({}, Events);
     var incr = function () { counter++; };
@@ -339,7 +339,7 @@ test("callback list is not altered during trigger", function (t) {
     t.end();
 });
 
-test("#1282 - 'all' callback list is retrieved after each event.", function (t) {
+test('#1282 - `all` callback list is retrieved after each event.', function (t) {
     t.plan(1);
     var counter = 0;
     var obj = extend({}, Events);
@@ -352,13 +352,13 @@ test("#1282 - 'all' callback list is retrieved after each event.", function (t) 
     t.end();
 });
 
-test("if no callback is provided, `on` is a noop", function (t) {
+test('if no callback is provided, `on` is a noop', function (t) {
     t.plan(0);
     extend({}, Events).on('test').trigger('test');
     t.end();
 });
 
-test("if callback is truthy but not a function, `on` should throw an error just like jQuery", function (t) {
+test('if callback is truthy but not a function, `on` should throw an error just like jQuery', function (t) {
     t.plan(1);
     var view = extend({}, Events).on('test', 'noop');
     t.throws(function () {
@@ -367,7 +367,7 @@ test("if callback is truthy but not a function, `on` should throw an error just 
     t.end();
 });
 
-test("remove all events for a specific context", function (t) {
+test('remove all events for a specific context', function (t) {
     t.plan(4);
     var obj = extend({}, Events);
     obj.on('x y all', function () { t.ok(true); });
@@ -377,7 +377,7 @@ test("remove all events for a specific context", function (t) {
     t.end();
 });
 
-test("remove all events for a specific callback", function (t) {
+test('remove all events for a specific callback', function (t) {
     t.plan(4);
     var obj = extend({}, Events);
     var success = function () { t.ok(true); };
@@ -389,7 +389,7 @@ test("remove all events for a specific callback", function (t) {
     t.end();
 });
 
-test("#1310 - off does not skip consecutive events", function (t) {
+test('#1310 - off does not skip consecutive events', function (t) {
     t.plan(0);
     var obj = extend({}, Events);
     obj.on('event', function () {
@@ -403,7 +403,7 @@ test("#1310 - off does not skip consecutive events", function (t) {
     t.end();
 });
 
-test("once", function (t) {
+test('once', function (t) {
     t.plan(2);
     // Same as the previous test, but we use once rather than having to explicitly unbind
     var obj = { counterA: 0, counterB: 0 };
@@ -418,7 +418,7 @@ test("once", function (t) {
     t.end();
 });
 
-test("once variant one", function (t) {
+test('once variant one', function (t) {
     t.plan(3);
     var f = function () { t.ok(true); };
 
@@ -432,7 +432,7 @@ test("once variant one", function (t) {
     t.end();
 });
 
-test("once variant two", function (t) {
+test('once variant two', function (t) {
     t.plan(3);
     var f = function () { t.ok(true); };
     var obj = extend({}, Events);
@@ -445,7 +445,7 @@ test("once variant two", function (t) {
         t.end();
 });
 
-test("once with off", function (t) {
+test('once with off', function (t) {
     t.plan(0);
     var f = function () { t.ok(true); };
     var obj = extend({}, Events);
@@ -456,7 +456,7 @@ test("once with off", function (t) {
     t.end();
 });
 
-test("once with event maps", function (t) {
+test('once with event maps', function (t) {
     var obj = { counter: 0 };
     extend(obj, Events);
 
@@ -484,7 +484,7 @@ test("once with event maps", function (t) {
     t.end();
 });
 
-test("once with off only by context", function (t) {
+test('once with off only by context', function (t) {
     t.plan(0);
     var context = {};
     var obj = extend({}, Events);
@@ -494,7 +494,7 @@ test("once with off only by context", function (t) {
     t.end();
 });
 
-test("once with asynchronous events", function (t) {
+test('once with asynchronous events', function (t) {
     t.plan(1);
     var func = debounce(function () { t.ok(true); t.end() }, 50);
     var obj = extend({}, Events).once('async', func);
@@ -503,7 +503,7 @@ test("once with asynchronous events", function (t) {
     obj.trigger('async');
 });
 
-test("once with multiple events.", function (t) {
+test('once with multiple events.', function (t) {
     t.plan(2);
     var obj = extend({}, Events);
     obj.once('x y', function () { t.ok(true); });
@@ -511,7 +511,7 @@ test("once with multiple events.", function (t) {
     t.end();
 });
 
-test("Off during iteration with once.", function (t) {
+test('Off during iteration with once.', function (t) {
     t.plan(2);
     var obj = extend({}, Events);
     var f = function () { this.off('event', f); };
@@ -524,7 +524,7 @@ test("Off during iteration with once.", function (t) {
     t.end();
 });
 
-test("`once` on `all` should work as expected", function (t) {
+test('`once` on `all` should work as expected', function (t) {
     t.plan(1);
     var thing = extend({}, Events);
     thing.once('all', function () {
@@ -535,13 +535,13 @@ test("`once` on `all` should work as expected", function (t) {
     t.end();
 });
 
-test("once without a callback is a noop", function (t) {
+test('once without a callback is a noop', function (t) {
     t.plan(0);
     extend({}, Events).once('event').trigger('event');
     t.end();
 });
 
-test("event functions are chainable", function (t) {
+test('event functions are chainable', function (t) {
     var obj = extend({}, Events);
     var obj2 = extend({}, Events);
     var fn = function () {};
@@ -556,5 +556,31 @@ test("event functions are chainable", function (t) {
     t.equal(obj, obj.off('a c'));
     t.equal(obj, obj.stopListening(obj2, 'a'));
     t.equal(obj, obj.stopListening());
+    t.end();
+});
+
+test('listenToAndRun', function (t) {
+    var count = 0;
+    var a = extend({}, Events);
+    var b = extend({}, Events);
+    var result = a.listenToAndRun(b, 'all', function () {
+        count++;
+        t.equal(this, a, 'context should always be `a`');
+    });
+
+    t.equal(result, a, 'should return object');
+    t.equal(count, 1, 'should have been called right away');
+    b.trigger('anything');
+    t.equal(count, 2, 'should have been called when triggered');
+    t.equal(keys(a._listeningTo).length, 1, 'should have one object being listened to.');
+    
+    // stop it all
+    a.stopListening();
+    
+    // trigger to see
+    b.trigger('anything');
+    t.equal(count, 2, 'should not have triggered again');
+    t.equal(keys(a._listeningTo).length, 0, 'should have no objects being listened to.');
+
     t.end();
 });

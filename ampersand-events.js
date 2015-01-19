@@ -1,10 +1,12 @@
-var runOnce = require('../amp/once');
-var uniqueId = require('../amp/unique-id');
-var keys = require('../amp/keys');
-var isEmpty = require('../amp/is-empty');
-var each = require('../amp/each');
-var bind = require('../amp/bind');
+var runOnce = require('amp-once');
+var uniqueId = require('amp-unique-id');
+var keys = require('amp-keys');
+var isEmpty = require('amp-is-empty');
+var each = require('amp-each');
+var bind = require('amp-bind');
+var extend = require('amp-extend');
 var slice = Array.prototype.slice;
+var eventSplitter = /\s+/;
 
 
 var Events = {
@@ -92,12 +94,14 @@ var Events = {
             if (remove || isEmpty(obj._events)) delete this._listeningTo[id];
         }
         return this;
-    }
+    },
 
+    // Helper for mixing this into anything
+    mixin: function (obj) {
+        return extend(obj, Events);
+    }
 };
 
-// Regular expression used to split event strings.
-var eventSplitter = /\s+/;
 
 // Implement fancy features of the Events API such as multiple event
 // names `"change blur"` and jQuery-style event maps `{change: action}`
@@ -129,7 +133,12 @@ var eventsApi = function(obj, action, name, rest) {
 // triggering events. Tries to keep the usual cases speedy (most internal
 // Backbone events have 3 arguments).
 var triggerEvents = function(events, args) {
-    var ev, i = -1, l = events.length, a1 = args[0], a2 = args[1], a3 = args[2];
+    var ev;
+    var i = -1;
+    var l = events.length;
+    var a1 = args[0];
+    var a2 = args[1];
+    var a3 = args[2];
     switch (args.length) {
         case 0: while (++i < l) (ev = events[i]).callback.call(ev.ctx); return;
         case 1: while (++i < l) (ev = events[i]).callback.call(ev.ctx, a1); return;
@@ -139,13 +148,16 @@ var triggerEvents = function(events, args) {
     }
 };
 
-var listenMethods = {listenTo: 'on', listenToOnce: 'once'};
+var listenMethods = {
+    listenTo: 'on', 
+    listenToOnce: 'once'
+};
 
 // Inversion-of-control versions of `on` and `once`. Tell *this* object to
 // listen to an event in another object ... keeping track of what it's
 // listening to.
 each(listenMethods, function(implementation, method) {
-    Events[method] = function(obj, name, callback) {
+    Events[method] = function(obj, name, callback, run) {
         var listeningTo = this._listeningTo || (this._listeningTo = {});
         var id = obj._listenId || (obj._listenId = uniqueId('l'));
         listeningTo[id] = obj;
@@ -154,5 +166,12 @@ each(listenMethods, function(implementation, method) {
         return this;
     };
 });
+
+Events.listenToAndRun = function (obj, name, callback) {
+    Events.listenTo.apply(this, arguments);
+    if (!callback && typeof name === 'object') callback = this;
+    callback.apply(this);
+    return this;
+};
 
 module.exports = Events;
