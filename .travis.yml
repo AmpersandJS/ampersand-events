@@ -12,6 +12,6 @@ addons:
   sauce_connect:
     username: codebear
     access_key:
-      secure: "Fsi0W/xt/ozUxOwpp0az06BkPoB1wTzK/UnlT9anwAZ57ptfxuAgEAGWe1y2VaTTlxk52q82x0Y6ES4iJ9P+69s5QtdEBqLHdTLM8RBsdXsIhVjoOMURnVpCXYDKnJfYyEb0tlJCac61v4ZmioFQDDNzk5OVqqb7oxF58n/ebwk="
+      secure: "Kef9LMluK824/7j3k1cEuUQURCRADfOQE/9DMys14UW/QNAZwwG8h2OKf6k9qhAYRtb/qHlbfPpdYdjFWMWe5i3IlnqeY+TPlj+GvaEKE82emjbysb77Gsf3gUx3qenrwyDNTNvL9v/3/uXvWj4dVPrH7OocfvnGC+yEN4W2/1Q="
       
 script: npm run test-ci
