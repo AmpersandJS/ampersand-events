@@ -17,7 +17,7 @@ notifications:
     on_start: false     # default: false
 addons:
   sauce_connect:
-    username: codebear
+    username: ampersandjs-ci
     access_key:
       secure: "Ck938zq2+PgTxFnghf6yAcOJDpJI9WonorvE+2ZyZb1OuNqgQy7KQJafSKysS4kkxtjf8lDENep3Hc4r9NhQLGizV2B3G4C1tVhhGhLnvBKFaAdorqQYMeAk2Tg+5/lc4eND+VruYmMMmVO7CoKqAb5GR6pHq7FDkLUPBxnCJ1s="
       
