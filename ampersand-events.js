@@ -1,3 +1,4 @@
+/*$AMPERSAND_VERSION*/
 var runOnce = require('amp-once');
 var uniqueId = require('amp-unique-id');
 var keys = require('amp-keys');

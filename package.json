@@ -3,6 +3,11 @@
   "description": "Module that can be mixed into any object to provide eventing. Heavily based on Backbone Events.",
   "version": "1.0.0",
   "author": "Henrik Joreteg <henrik@andyet.net>",
+  "browserify": {
+    "transform": [
+      "ampersand-version"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/ampersandjs/ampersand-events/issues"
   },
@@ -13,7 +18,8 @@
     "amp-is-empty": "^1.0.2",
     "amp-keys": "^1.0.1",
     "amp-once": "^1.0.1",
-    "amp-unique-id": "^1.0.2"
+    "amp-unique-id": "^1.0.2",
+    "ampersand-version": "^1.0.2"
   },
   "devDependencies": {
     "amp-debounce": "^1.0.1",
