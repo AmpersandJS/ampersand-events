@@ -56,8 +56,6 @@ You can call `Event.createEmitter()` without any arguments to create an "empty" 
 
 This can be really useful for creating what you might call an "event bus" or "pubsub" mechanism for things like application events, or whatnot.
 
-cal
-
 Say you created a module like this:
 
 ```
