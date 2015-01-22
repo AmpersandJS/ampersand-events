@@ -584,3 +584,14 @@ test('listenToAndRun', function (t) {
 
     t.end();
 });
+
+test('createEmitter', function (t) {
+    t.ok(Events.createEmitter().on, 'can create new empty emitters');
+
+    var myObj = {};
+    Events.createEmitter(myObj);
+
+    t.ok(myObj.on, 'adds event methods to existing objects if passed');
+
+    t.end();
+});

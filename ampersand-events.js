@@ -96,7 +96,8 @@ var Events = {
         return this;
     },
 
-    // create
+    // extend an object with event capabilities if passed
+    // or just return a new one.
     createEmitter: function (obj) {
         return extend(obj || {}, Events);
     }
