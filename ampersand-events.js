@@ -96,9 +96,9 @@ var Events = {
         return this;
     },
 
-    // Helper for mixing this into anything
-    mixin: function (obj) {
-        return extend(obj, Events);
+    // create
+    createEmitter: function (obj) {
+        return extend(obj || {}, Events);
     }
 };
 
