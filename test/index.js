@@ -305,7 +305,7 @@ test('bind a callback with a supplied context', function (t) {
     };
 
     var obj = extend({},Events);
-    obj.on('event', function () { this.assertTrue(); }, (new TestClass));
+    obj.on('event', function () { this.assertTrue(); }, (new TestClass()));
     obj.trigger('event');
     t.end();
 });
@@ -496,7 +496,7 @@ test('once with off only by context', function (t) {
 
 test('once with asynchronous events', function (t) {
     t.plan(1);
-    var func = debounce(function () { t.ok(true); t.end() }, 50);
+    var func = debounce(function () { t.ok(true); t.end(); }, 50);
     var obj = extend({}, Events).once('async', func);
 
     obj.trigger('async');
@@ -573,10 +573,10 @@ test('listenToAndRun', function (t) {
     b.trigger('anything');
     t.equal(count, 2, 'should have been called when triggered');
     t.equal(keys(a._listeningTo).length, 1, 'should have one object being listened to.');
-    
+
     // stop it all
     a.stopListening();
-    
+
     // trigger to see
     b.trigger('anything');
     t.equal(count, 2, 'should not have triggered again');
