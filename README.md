@@ -1,12 +1,5 @@
 # ampersand-events
 
-** DRAFT STAGE **: ready for reivew, not use, quite yet. 
-
-Still needs:
-
-- API reference
-- `1.x.x` version
-
 <!-- starthide -->
 Part of the [Ampersand.js toolkit](http://ampersandjs.com) for building clientside applications.
 <!-- endhide -->
