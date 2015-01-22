@@ -131,8 +131,7 @@ var eventsApi = function(obj, action, name, rest) {
 };
 
 // A difficult-to-believe, but optimized internal dispatch function for
-// triggering events. Tries to keep the usual cases speedy (most internal
-// Backbone events have 3 arguments).
+// triggering events. Tries to keep the usual cases speedy.
 var triggerEvents = function(events, args) {
     var ev;
     var i = -1;
