@@ -100,7 +100,7 @@ myObj.on('anything', function () {
 });
 ```
 
-### once `eventObj.on(eventName, callback, [context])`
+### once `eventObj.once(eventName, callback, [context])`
 
 Exactly like `on` but removes itself after getting called once no matter how many times the event is triggered.
 
