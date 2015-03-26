@@ -88,6 +88,8 @@ myObj.trigger('customEvent');
 
 ### on `eventObj.on(eventName, callback, [context])`
 
+(aliased as `bind` for backwards compatibility)
+
 Bind a function to be called each time the `eventName` is triggered on that object.
 
 * `eventName` {String} The name of the event to listen for. Can also be `"all"` which will call your callback no matter what event is triggered.
@@ -106,11 +108,14 @@ Exactly like `on` but removes itself after getting called once no matter how man
 
 ### off `eventObj.off([eventName], [callback], [context])`
 
+(aliased as `unbind` for backwards compatibility)
+
 Remove previously bound callback(s) from the object. If no context is specified all versions of callback no matter what context was given will be removed. If no callback was specified, all callbacks for that given `eventName` will be removed. If no `eventName` was specified callbacks for all events are removed.
 
 * `eventName` {String} The name of the event to remove. Pass `null` to "leave blank". 
 * `callback` {Function} The function to remove or pass `null` to "leave blank".
 * `context` {Object} Remove all callbacks with this context.
+
 
 These can be used in any combination as shown below:
 

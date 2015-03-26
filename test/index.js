@@ -25,6 +25,28 @@ test('on and trigger', function (t) {
     t.end();
 });
 
+test('bind/unbind and trigger (for backwards compatibility)', function (t) {
+    t.plan(3);
+    var obj = {
+        counter: 0
+    };
+    extend(obj, Events);
+    obj.bind('event', function () {
+        obj.counter += 1;
+    });
+    obj.trigger('event');
+    t.equal(obj.counter,1,'counter should be incremented.');
+    obj.trigger('event');
+    obj.trigger('event');
+    obj.trigger('event');
+    obj.trigger('event');
+    t.equal(obj.counter, 5, 'counter should be incremented five times.');
+    obj.unbind('event');
+    obj.trigger('event');
+    t.equal(obj.counter, 5, 'counter should not be further incremented as unbound.');
+    t.end();
+});
+
 test('binding and triggering multiple events', function (t) {
     t.plan(4);
     var obj = { counter: 0 };

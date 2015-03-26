@@ -104,6 +104,9 @@ var Events = {
     }
 };
 
+Events.bind = Events.on;
+Events.unbind = Events.off;
+
 
 // Implement fancy features of the Events API such as multiple event
 // names `"change blur"` and jQuery-style event maps `{change: action}`
