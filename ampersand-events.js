@@ -1,11 +1,11 @@
 /*$AMPERSAND_VERSION*/
-var runOnce = require('amp-once');
-var uniqueId = require('amp-unique-id');
-var keys = require('amp-keys');
-var isEmpty = require('amp-is-empty');
-var each = require('amp-each');
-var bind = require('amp-bind');
-var extend = require('amp-extend');
+var runOnce = require('lodash.once');
+var uniqueId = require('lodash.uniqueid');
+var keys = require('lodash.keys');
+var isEmpty = require('lodash.isempty');
+var each = require('lodash.foreach');
+var bind = require('lodash.bind');
+var assign = require('lodash.assign');
 var slice = Array.prototype.slice;
 var eventSplitter = /\s+/;
 
@@ -100,7 +100,7 @@ var Events = {
     // extend an object with event capabilities if passed
     // or just return a new one.
     createEmitter: function (obj) {
-        return extend(obj || {}, Events);
+        return assign(obj || {}, Events);
     }
 };
 
@@ -153,7 +153,7 @@ var triggerEvents = function(events, args) {
 };
 
 var listenMethods = {
-    listenTo: 'on', 
+    listenTo: 'on',
     listenToOnce: 'once'
 };
 
