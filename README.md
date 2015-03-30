@@ -21,13 +21,13 @@ npm install ampersand-events
 
 ```javascript
 var Events = require('ampersand-events');
-var extend = require('amp-extend');
+var assign = require('lodash.assign');
 
 // Create some constructor
 var MyConstructor = function () {};
 
 // Extend the prototype with the event methods and your own:
-extend(MyConstructor.prototype, Events, {
+assign(MyConstructor.prototype, Events, {
     myOtherMethods: function () {}
 });
 
@@ -140,7 +140,7 @@ eventObj.off();
 
 Triggers all the callbacks for the given `eventName`.
 
-* `eventName` {String} Name of event, or space-deliminated list of events.
+* `eventName` {String} Name of event, or space-delimited list of events.
 * `argsToPassOn` { ... } Any additional arguments will simply be used to call the callbacks that are listening for this event.
 
 ```javascript
@@ -158,7 +158,7 @@ Tell an `eventObject` to listen to `eventName` on another object. This is anothe
 For example, if we use `.listenTo` to listen to model changes it cares about in an ampersand-view the view will know what callbacks it needs to unregister if it gets removed.
 
 * `otherEventObj` {Event object} The other object to listen to.
-* `eventName` {String} Event to listen to (can also be space deliminted list of events).
+* `eventName` {String} Event to listen to (can also be space delimited list of events).
 * `callback` {Function} The function to call when event occurs.
 
 **Note:** the callback will always be called with the `eventObj` as the `this` value.
