@@ -162,10 +162,16 @@ var listenMethods = {
 // listening to.
 each(listenMethods, function(implementation, method) {
     Events[method] = function(obj, name, callback, run) {
+        if (!obj) {
+            throw new Error('Trying to listenTo event: \'' + name + '\' but the target object is undefined');
+        }
         var listeningTo = this._listeningTo || (this._listeningTo = {});
         var id = obj._listenId || (obj._listenId = uniqueId('l'));
         listeningTo[id] = obj;
         if (!callback && typeof name === 'object') callback = this;
+        if (typeof obj[implementation] !== 'function') {
+            throw new Error('Trying to listenTo event: \'' + name + '\' on object: ' + obj.toString() + ' but it does not have an \'on\' method so is unbindable');
+        }
         obj[implementation](name, callback, this);
         return this;
     };
