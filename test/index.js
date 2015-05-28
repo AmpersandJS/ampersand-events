@@ -620,7 +620,7 @@ test('createEmitter', function (t) {
 
 test('throws a useful error if listening to an undefined object with listenTo', function (t) {
     t.plan(1);
-    var view = extend({}, Events);
+    var view = assign({}, Events);
     t.throws(function () {
         view.listenTo(undefined, 'test', function () {});
     }, /Trying to listenTo event: 'test'/);
@@ -629,7 +629,7 @@ test('throws a useful error if listening to an undefined object with listenTo', 
 
 test('throws a useful error if listening to a non-bindable object with listenTo', function (t) {
     t.plan(1);
-    var view = extend({}, Events);
+    var view = assign({}, Events);
     t.throws(function () {
         view.listenTo(5, 'test', function () {});
     }, /Trying to listenTo event: 'test'/);
