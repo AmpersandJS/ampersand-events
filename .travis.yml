@@ -6,8 +6,8 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 env:
   global:
-  - secure: "c13p96hzp54rRtR8eU+RBmXvuLuGUpTrD8fxJaEHTuPBe0gIZzwi8CqYE3yQqrFYU0EFsBvEQiHmslLVTTUvCcCW0ae8xk61RCJyge/6InQWldmJdXawgAeqwoRanfbAMr8tVfTO6T+9iESVcIOkPgWQ3CQb6/KizTe5937BNp4="
-  - secure: "NZXIAqpE9xk/6wKeSL5LLTO0DWE2MZoJ1dP7VWXBDklWfcM4mJS6yYf2/q7nnG1T+RqKQUGF//GOv9JPFmeQxP41UNIH7GwvCfIZSZGvRqZ1xAYmlijvVMWFw6o2WTw42OFu0GFvq5Gp+2ohIdrR4U47HSA0X/+JQYyM5wYDtYs="
+  - secure: "lgOut9Z1H1WlJ4j5XmL1MDaYxfM8qIfsPjmKIUqnQ9zFM0AG+CtCpQk0p7BLH53bl8Rg2P1BCVfsSuQWQkbw3MZWZCoHJm0vnFdfaa0+2RJ280bkkzwIEFSWsJS5iAVkkscoDUI9yXsvYyhWp6kf545IsCuF/hZ//zKTNQtFOw0="
+  - secure: "av6FsQVcpeHifitECMDk7uAqLEpzjtvI3SWnP5CBrZlEdjq+Ibe5PIu3/me8rUozrDY8HghIkcMrOjHQEzwkhcNwtnlM7UoP7st2v71D9ZOpY+d6h4NTuvhfPlNUBc+9n/Leur207yf+cdjPlHDk9/CFLZw2phs/ezogQnrifRw="
 notifications:
   webhooks:
     urls:
@@ -19,6 +19,6 @@ addons:
   sauce_connect:
     username: ampersandjs-ci
     access_key:
-      secure: "gd/90cxn7Z9li+nKDKTxuKizhCdL2LdRd1fiPuK8oEgRRNXAYnQzmY9Gw9DUjDPPsW5VtBWKdRcADJhzQcumTwGu34+m0GL7JK8H5Wcmu4JBlSP68kTXNOvONVe4jCwLZmllMV6fxiVDRxHAgCKniaOL1L+crn+zx5eBSDrTITQ="
+      secure: "av6FsQVcpeHifitECMDk7uAqLEpzjtvI3SWnP5CBrZlEdjq+Ibe5PIu3/me8rUozrDY8HghIkcMrOjHQEzwkhcNwtnlM7UoP7st2v71D9ZOpY+d6h4NTuvhfPlNUBc+9n/Leur207yf+cdjPlHDk9/CFLZw2phs/ezogQnrifRw="
       
 script: npm run test-ci
