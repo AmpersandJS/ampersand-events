@@ -16,9 +16,6 @@ notifications:
     on_failure: always  # options: [always|never|change] default: always
     on_start: false     # default: false
 addons:
-  sauce_connect:
-    username: ampersandjs-ci
-    access_key:
-      secure: "av6FsQVcpeHifitECMDk7uAqLEpzjtvI3SWnP5CBrZlEdjq+Ibe5PIu3/me8rUozrDY8HghIkcMrOjHQEzwkhcNwtnlM7UoP7st2v71D9ZOpY+d6h4NTuvhfPlNUBc+9n/Leur207yf+cdjPlHDk9/CFLZw2phs/ezogQnrifRw="
-      
+  sauce_connect: true
+
 script: npm run test-ci
