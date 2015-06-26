@@ -9,6 +9,7 @@
     ]
   },
   "files": [
+    "libs",
     "ampersand-events.js",
     "NOTICE.md"
   ],
