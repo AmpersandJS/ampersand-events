@@ -47,7 +47,7 @@ var myObj = {};
 Events.createEmitter(myObj);
 
 // it now has event methods
-myObject.trigger('some event');
+myObj.trigger('some event');
 ```
 
 ### Using as an event bus / or pubsub channel
