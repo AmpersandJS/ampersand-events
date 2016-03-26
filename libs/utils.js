@@ -1,4 +1,4 @@
-var uniqueId = require('lodash.uniqueid');
+var uniqueId = require('lodash/uniqueid');
 var eventSplitter = /\s+/;
 
 // A difficult-to-believe, but optimized internal dispatch function for
