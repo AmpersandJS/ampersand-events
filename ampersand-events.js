@@ -1,9 +1,9 @@
 /*$AMPERSAND_VERSION*/
-var runOnce = require('lodash.once');
-var keys = require('lodash.keys');
-var isEmpty = require('lodash.isempty');
-var assign = require('lodash.assign');
-var forEach = require('lodash.foreach');
+var runOnce = require('lodash/once');
+var keys = require('lodash/keys');
+var isEmpty = require('lodash/isEmpty');
+var assign = require('lodash/assign');
+var forEach = require('lodash/forEach');
 var slice = Array.prototype.slice;
 
 var utils = require('./libs/utils');
@@ -26,7 +26,7 @@ var Events = {
         var self = this;
         var once = runOnce(function () {
             self.off(name, once);
-            callback.apply(this, arguments);
+            callback.apply(self, arguments);
         });
         once._callback = callback;
         return this.on(name, once, context);
@@ -87,10 +87,11 @@ var Events = {
         var remove = !name && !callback;
         if (!callback && typeof name === 'object') callback = this;
         if (obj) (listeningTo = {})[obj._listenId] = obj;
+        var self = this;
         forEach(listeningTo, function (item, id) {
-            item.off(name, callback, this);
-            if (remove || isEmpty(item._events)) delete this._listeningTo[id];
-        }, this);
+            item.off(name, callback, self);
+            if (remove || isEmpty(item._events)) delete self._listeningTo[id];
+        });
         return this;
     },
 

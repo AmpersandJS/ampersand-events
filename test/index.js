@@ -1,8 +1,8 @@
 var test = require('tape');
-var assign = require('lodash.assign');
-var keys = require('lodash.keys');
-var size = require('lodash.size');
-var debounce = require('lodash.debounce');
+var assign = require('lodash/assign');
+var keys = require('lodash/keys');
+var size = require('lodash/size');
+var debounce = require('lodash/debounce');
 var Events = require('../ampersand-events');
 
 
