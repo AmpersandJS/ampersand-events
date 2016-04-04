@@ -202,6 +202,9 @@ eventObj.stopListening(null, 'change');
 eventObj.stopListening(null, null, callback);
 ```
 
+### changelog
+- 2.0.0 - switch to lodash v4
+
 ## license
 
 MIT
