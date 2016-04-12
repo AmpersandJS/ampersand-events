@@ -116,5 +116,8 @@ var Events = {
 // setup aliases
 Events.bind = Events.on;
 Events.unbind = Events.off;
+Events.removeListener = Events.off;
+Events.removeAllListeners = Events.off;
+Events.emit = Events.trigger;
 
 module.exports = Events;
