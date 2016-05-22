@@ -26,7 +26,7 @@ var Events = {
         var self = this;
         var once = runOnce(function () {
             self.off(name, once);
-            callback.apply(self, arguments);
+            callback.apply(this, arguments);
         });
         once._callback = callback;
         return this.on(name, once, context);
