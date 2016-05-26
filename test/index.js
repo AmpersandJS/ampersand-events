@@ -460,11 +460,12 @@ test('once variant two', function (t) {
     var obj = assign({}, Events);
 
     obj
-        .once('event', f)
-        .on('event', f)
-        .trigger('event')
-        .trigger('event');
-        t.end();
+    .once('event', f)
+    .on('event', f)
+    .trigger('event')
+    .trigger('event');
+    
+    t.end();
 });
 
 test('once with off', function (t) {
@@ -503,6 +504,23 @@ test('once with event maps', function (t) {
 
     obj.trigger('a b c');
     t.equal(obj.counter, 3);
+    t.end();
+});
+
+test('bind a callback with a supplied context when using once', function (t) {
+    t.plan(1);
+    
+    var TestClass = function () {
+        return this;
+    };
+    
+    TestClass.prototype.assertTrue = function () {
+        t.ok(true, '`this` was bound to the callback');
+    };
+
+    var obj = assign({},Events);
+    obj.once('event', function () { this.assertTrue(); }, (new TestClass()));
+    obj.trigger('event');
     t.end();
 });
 
