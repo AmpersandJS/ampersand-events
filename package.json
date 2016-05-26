@@ -1,7 +1,7 @@
 {
   "name": "ampersand-events",
   "description": "Module that can be mixed into any object to provide eventing. Heavily based on Backbone Events.",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "Henrik Joreteg <henrik@andyet.net>",
   "browserify": {
     "transform": [
